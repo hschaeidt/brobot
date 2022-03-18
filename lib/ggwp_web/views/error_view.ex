@@ -1,5 +1,5 @@
-defmodule WorkspaceWeb.ErrorView do
-  use WorkspaceWeb, :view
+defmodule GGWPWeb.ErrorView do
+  use GGWPWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

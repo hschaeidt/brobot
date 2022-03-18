@@ -1,12 +1,12 @@
-defmodule WorkspaceWeb do
+defmodule GGWPWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use WorkspaceWeb, :controller
-      use WorkspaceWeb, :view
+      use GGWPWeb, :controller
+      use GGWPWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,19 +19,19 @@ defmodule WorkspaceWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: WorkspaceWeb
+      use Phoenix.Controller, namespace: GGWPWeb
 
       import Plug.Conn
-      import WorkspaceWeb.Gettext
-      alias WorkspaceWeb.Router.Helpers, as: Routes
+      import GGWPWeb.Gettext
+      alias GGWPWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/workspace_web/templates",
-        namespace: WorkspaceWeb
+        root: "lib/ggwp_web/templates",
+        namespace: GGWPWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -45,7 +45,7 @@ defmodule WorkspaceWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {WorkspaceWeb.LayoutView, "live.html"}
+        layout: {GGWPWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -72,7 +72,7 @@ defmodule WorkspaceWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import WorkspaceWeb.Gettext
+      import GGWPWeb.Gettext
     end
   end
 
@@ -87,9 +87,9 @@ defmodule WorkspaceWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import WorkspaceWeb.ErrorHelpers
-      import WorkspaceWeb.Gettext
-      alias WorkspaceWeb.Router.Helpers, as: Routes
+      import GGWPWeb.ErrorHelpers
+      import GGWPWeb.Gettext
+      alias GGWPWeb.Router.Helpers, as: Routes
     end
   end
 

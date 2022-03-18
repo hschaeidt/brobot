@@ -1,10 +1,10 @@
 import Config
 
 # Configure your database
-config :workspace, Workspace.Repo,
+config :ggwp, GGWP.Repo,
   username: "postgres",
   password: "postgres",
-  database: "workspace_dev",
+  database: "ggwp_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,14 +15,14 @@ config :workspace, Workspace.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :workspace, WorkspaceWeb.Endpoint,
+config :ggwp, GGWPWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "6epWDJmR/2jUPfQmK5nRJ7L+pgqQ3AoZsawpuBKpdo7fbIhHeJn6pmbQ/RZDBdeJ",
+  secret_key_base: "ux5m1wWYMM+8kWS3LOgeu3Ga8EkkVavdviAEJny8leySQgWuc/bbo8oYds70IG4f",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
@@ -53,13 +53,13 @@ config :workspace, WorkspaceWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :workspace, WorkspaceWeb.Endpoint,
+config :ggwp, GGWPWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/workspace_web/(live|views)/.*(ex)$",
-      ~r"lib/workspace_web/templates/.*(eex)$"
+      ~r"lib/ggwp_web/(live|views)/.*(ex)$",
+      ~r"lib/ggwp_web/templates/.*(eex)$"
     ]
   ]
 

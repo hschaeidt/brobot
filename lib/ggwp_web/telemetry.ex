@@ -1,4 +1,4 @@
-defmodule WorkspaceWeb.Telemetry do
+defmodule GGWPWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -31,23 +31,23 @@ defmodule WorkspaceWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("workspace.repo.query.total_time",
+      summary("ggwp.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("workspace.repo.query.decode_time",
+      summary("ggwp.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("workspace.repo.query.query_time",
+      summary("ggwp.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("workspace.repo.query.queue_time",
+      summary("ggwp.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("workspace.repo.query.idle_time",
+      summary("ggwp.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -65,7 +65,7 @@ defmodule WorkspaceWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {WorkspaceWeb, :count_users, []}
+      # {GGWPWeb, :count_users, []}
     ]
   end
 end

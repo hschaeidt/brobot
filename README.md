@@ -1,4 +1,4 @@
-# Workspace
+# GGWP
 
 To start your Phoenix server:
 

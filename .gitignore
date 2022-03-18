@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-workspace-*.tar
+ggwp-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
@@ -32,3 +32,5 @@ workspace-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Visual Studio Code ElixirLS Extension artifacts.
+/.elixir_ls/

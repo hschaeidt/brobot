@@ -1,5 +1,5 @@
-defmodule WorkspaceWeb.PageControllerTest do
-  use WorkspaceWeb.ConnCase
+defmodule GGWPWeb.PageControllerTest do
+  use GGWPWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

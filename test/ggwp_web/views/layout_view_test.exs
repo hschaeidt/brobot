@@ -1,5 +1,5 @@
-defmodule WorkspaceWeb.LayoutViewTest do
-  use WorkspaceWeb.ConnCase, async: true
+defmodule GGWPWeb.LayoutViewTest do
+  use GGWPWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and
   # use functions such as safe_to_string() to convert the helper

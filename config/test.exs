@@ -5,23 +5,23 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :workspace, Workspace.Repo,
+config :ggwp, GGWP.Repo,
   username: "postgres",
   password: "postgres",
-  database: "workspace_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "ggwp_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :workspace, WorkspaceWeb.Endpoint,
+config :ggwp, GGWPWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "HRz+Iz4jbA2vNvUzp7/+UV0NbJTB0393y7/vIrGesbDcLAPkBAWxfWenbUZTL691",
+  secret_key_base: "sckP3g073jJIQH/rcVfE7J5FwOhXbQG3i/P1u76ixQ8mzeJS36w0tGHtQHUUgIlp",
   server: false
 
 # In test we don't send emails.
-config :workspace, Workspace.Mailer, adapter: Swoosh.Adapters.Test
+config :ggwp, GGWP.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn

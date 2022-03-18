@@ -7,15 +7,16 @@
 # General application configuration
 import Config
 
-config :workspace,
-  ecto_repos: [Workspace.Repo]
+config :ggwp,
+  namespace: GGWP,
+  ecto_repos: [GGWP.Repo]
 
 # Configures the endpoint
-config :workspace, WorkspaceWeb.Endpoint,
+config :ggwp, GGWPWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: WorkspaceWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Workspace.PubSub,
-  live_view: [signing_salt: "P5iVaLg8"]
+  render_errors: [view: GGWPWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: GGWP.PubSub,
+  live_view: [signing_salt: "TUuhRddH"]
 
 # Configures the mailer
 #
@@ -24,7 +25,7 @@ config :workspace, WorkspaceWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :workspace, Workspace.Mailer, adapter: Swoosh.Adapters.Local
+config :ggwp, GGWP.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

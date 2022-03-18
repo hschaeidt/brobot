@@ -1,9 +1,9 @@
-defmodule Workspace.MixProject do
+defmodule GGWP.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :workspace,
+      app: :ggwp,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Workspace.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Workspace.Application, []},
+      mod: {GGWP.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
