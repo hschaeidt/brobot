@@ -6,6 +6,26 @@ import Config
 # and secrets from environment variables or elsewhere. Do not define
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
+
+chatbot_pass =
+  System.get_env("CHATBOT_PASSWORD") ||
+    raise """
+    environment variable CHATBOT_PASSWORD is missing.
+    For example: oauth:token
+    """
+
+config :ggwp,
+  bots: [
+    [
+      bot: GGWP.Chatbot,
+      user: "brobot4",
+      pass: chatbot_pass,
+      channels: ["t0k_"],
+      debug: false
+    ]
+  ]
+
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||

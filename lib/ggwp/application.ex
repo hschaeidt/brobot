@@ -7,6 +7,8 @@ defmodule GGWP.Application do
 
   @impl true
   def start(_type, _args) do
+    [bot_config] = Application.fetch_env!(:ggwp, :bots)
+
     children = [
       # Start the Ecto repository
       GGWP.Repo,
@@ -15,9 +17,10 @@ defmodule GGWP.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: GGWP.PubSub},
       # Start the Endpoint (http/https)
-      GGWPWeb.Endpoint
+      GGWPWeb.Endpoint,
       # Start a worker by calling: GGWP.Worker.start_link(arg)
       # {GGWP.Worker, arg}
+      {TMI.Supervisor, bot_config},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
