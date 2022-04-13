@@ -55,7 +55,7 @@ defmodule GGWP.MixProject do
       {:ueberauth_twitch, "~> 0.1.0"},
 
       # Chatbot related
-      {:tmi, "~> 0.5.3"},
+      {:tmi, "~> 0.5.3"}
     ]
   end
 
@@ -71,7 +71,11 @@ defmodule GGWP.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "cmd --cd assets npm run deploy",
+        "esbuild default --minify",
+        "phx.digest"
+      ]
     ]
   end
 end

@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.0.24",
+    "tw-elements": "^1.0.0-alpha12"
+  },
+  "scripts": {
+    "deploy": "NODE_ENV=production tailwindcss --minify --input=css/app.css --output=../priv/static/assets/app.css"
+  }
+}
