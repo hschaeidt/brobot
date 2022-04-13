@@ -80,6 +80,28 @@ defmodule GGWP.Accounts do
     |> Repo.insert()
   end
 
+  def register_user_with_profile(user_attrs, profile_attrs) do
+    Repo.transaction(fn ->
+      case register_user(user_attrs) do
+        {:ok, user} ->
+          case create_profile(user, %{
+                 uid: profile_attrs.uid,
+                 provider: "#{profile_attrs.provider}",
+                 email: profile_attrs.email,
+                 first_name: profile_attrs.first_name,
+                 last_name: profile_attrs.last_name,
+                 nickname: profile_attrs.nickname
+               }) do
+            {:ok, profile} -> {user, profile}
+            {:error, changeset} -> Repo.rollback({:failed_transfer, changeset})
+          end
+
+        {:error, changeset} ->
+          Repo.rollback({:failed_transfer, changeset})
+      end
+    end)
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking user changes.
 
@@ -213,6 +235,21 @@ defmodule GGWP.Accounts do
       {:ok, %{user: user}} -> {:ok, user}
       {:error, :user, changeset, _} -> {:error, changeset}
     end
+  end
+
+  ## Profile
+
+  def create_profile(user, attrs) do
+    Ecto.build_assoc(user, :profiles, attrs)
+    |> Repo.insert()
+  end
+
+  def get_user_by_profile_uid(uid) do
+    Repo.one(
+      from u in User,
+        join: p in assoc(u, :profiles),
+        where: p.uid == ^uid
+    )
   end
 
   ## Session

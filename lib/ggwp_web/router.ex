@@ -5,6 +5,7 @@ defmodule GGWPWeb.Router do
 
   pipeline :browser do
     plug :accepts, ["html"]
+    plug Ueberauth
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {GGWPWeb.LayoutView, :root}
@@ -87,5 +88,12 @@ defmodule GGWPWeb.Router do
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :edit
     post "/users/confirm/:token", UserConfirmationController, :update
+  end
+
+  scope "/auth", GGWPWeb do
+    pipe_through [:browser]
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
   end
 end
