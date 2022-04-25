@@ -21,7 +21,7 @@ defmodule GGWPWeb.AuthController do
     """)
 
     user =
-      case Accounts.get_user_by_profile_uid(auth.uid) do
+      case Accounts.get_user_by_profile_external_id(auth.uid) do
         nil ->
           {:ok, {user, _profile}} =
             Accounts.register_user_with_profile(

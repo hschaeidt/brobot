@@ -2,12 +2,14 @@ defmodule GGWP.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias GGWP.Community.Profile
+
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
-    has_many :profiles, GGWP.Accounts.Profile
+    has_many :profiles, Profile
 
     timestamps()
   end

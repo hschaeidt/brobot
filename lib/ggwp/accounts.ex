@@ -84,8 +84,8 @@ defmodule GGWP.Accounts do
     Repo.transaction(fn ->
       case register_user(user_attrs) do
         {:ok, user} ->
-          case create_profile(user, %{
-                 uid: profile_attrs.uid,
+          case GGWP.Community.create_profile(user, %{
+                 external_id: profile_attrs.uid,
                  provider: "#{profile_attrs.provider}",
                  email: profile_attrs.email,
                  first_name: profile_attrs.first_name,
@@ -239,16 +239,11 @@ defmodule GGWP.Accounts do
 
   ## Profile
 
-  def create_profile(user, attrs) do
-    Ecto.build_assoc(user, :profiles, attrs)
-    |> Repo.insert()
-  end
-
-  def get_user_by_profile_uid(uid) do
+  def get_user_by_profile_external_id(external_id) do
     Repo.one(
       from u in User,
         join: p in assoc(u, :profiles),
-        where: p.uid == ^uid
+        where: p.external_id == ^external_id
     )
   end
 
