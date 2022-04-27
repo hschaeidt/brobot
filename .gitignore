@@ -34,3 +34,6 @@ npm-debug.log
 
 # Visual Studio Code ElixirLS Extension artifacts.
 /.elixir_ls/
+
+# Environment Secrets
+/.env

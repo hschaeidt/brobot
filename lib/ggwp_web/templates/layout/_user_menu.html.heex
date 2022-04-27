@@ -1,0 +1,8 @@
+<ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+<%= if @current_user do %>
+  <li class="nav-item p-2"><%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0" %></li>
+  <li class="nav-item p-2"><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0" %></li>
+<% else %>
+  <li class="nav-item p-2"><%= link "Log in with Twitch", to: Routes.auth_path(@conn, :request, "twitch"), class: "inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" %></li>
+<% end %>
+</ul>
