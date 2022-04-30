@@ -20,7 +20,7 @@ config :ggwp,
       bot: GGWP.Chatbot,
       user: "brobot4",
       pass: chatbot_pass,
-      channels: ["t0k_"],
+      channels: ["t0k_", "mayflowerstreamteam"],
       debug: false
     ]
   ]
